@@ -11,12 +11,7 @@ import (
 )
 
 func main() {
-	id, err := uuid.NewV4()
-	if err != nil {
-		fmt.Printf("failed to generate uuid: %s", err)
-		return
-	}
-
+	id := uuid.NewV4()
 	loan := loan.Loan{
 		ID: id.String(),
 	}
