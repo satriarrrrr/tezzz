@@ -15,7 +15,12 @@ func TestNumberOfDays(t *testing.T) {
 		want    uint64
 		wantErr bool
 	}{
-		// TODO: Add test cases.
+		// 1. Invalid format of soldDate
+		// 2. Invalid format of matureDate
+		// 3. Invalid format of both soldDate & matureDate
+		// 4. soldDate is greater than matureDate
+		// 5. soldDate == matureDate
+		// 6. matureDate is greater than soldDate
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -42,7 +47,9 @@ func TestCalculateInterest(t *testing.T) {
 		args args
 		want uint64
 	}{
-		// TODO: Add test cases.
+		// 1. Number of days = 0
+		// 2. Number of days > 0
+		// 3. apr = 7.18%
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -63,11 +70,12 @@ func TestCalculateTax(t *testing.T) {
 		args args
 		want uint64
 	}{
-		// 1. Total interest: 0, tax rate: 0%				->
-		// 2. Total interest: 1000000, tax rate: 0%			->
-		// 3. Total interest: 0, tax rate: 15%				->
-		// 4. Total interest: 1000000, tax rate: 15%		->
-		// 5. Total interest: 123123123, tax rate: 12.5%	->
+		// 1. Total interest: 0, tax rate: 0%				-> 0
+		// 2. Total interest: 1000000, tax rate: 0%			-> 0
+		// 3. Total interest: 0, tax rate: 15%				-> 0
+		// 4. Total interest: 1000000, tax rate: 15%		-> 150000
+		// 5. Total interest: 123123123, tax rate: 12.5%	-> 15390390(.375)
+		// 6. Total interest: 123123456, tax rate: 13.6%	-> 1674479001(.6)
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

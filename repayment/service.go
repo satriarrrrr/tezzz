@@ -15,7 +15,7 @@ type ServiceWithRepository struct {
 }
 
 // GetProjection return the projection of given loan
-// - get projection
+// - get projection, if there is projection stored return the projection
 // - calculate daydiff
 // - calculate interest
 // - calculate tax
