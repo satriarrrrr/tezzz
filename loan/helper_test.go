@@ -48,8 +48,70 @@ func TestCalculateInterest(t *testing.T) {
 		want uint64
 	}{
 		// 1. Number of days = 0
+		{
+			name: "1. Number of days = 0",
+			args: args{
+				principal:    550000,
+				numberOfDays: 0,
+				apr:          16.8,
+			},
+			want: 0,
+		},
 		// 2. Number of days > 0
-		// 3. apr = 7.18%
+		{
+			name: "2. Number of days > 0",
+			args: args{
+				principal:    550000,
+				numberOfDays: 21,
+				apr:          7.18,
+			},
+			want: 2303,
+		},
+		{
+			name: "2. Number of days > 0",
+			args: args{
+				principal:    550000,
+				numberOfDays: 31,
+				apr:          7.18,
+			},
+			want: 3400,
+		},
+		{
+			name: "2. Number of days > 0",
+			args: args{
+				principal:    550000,
+				numberOfDays: 30,
+				apr:          7.18,
+			},
+			want: 3290,
+		},
+		{
+			name: "2. Number of days > 0",
+			args: args{
+				principal:    100000,
+				numberOfDays: 24,
+				apr:          7.18,
+			},
+			want: 478,
+		},
+		{
+			name: "2. Number of days > 0",
+			args: args{
+				principal:    100000,
+				numberOfDays: 31,
+				apr:          7.18,
+			},
+			want: 618,
+		},
+		{
+			name: "2. Number of days > 0",
+			args: args{
+				principal:    100000,
+				numberOfDays: 30,
+				apr:          7.18,
+			},
+			want: 598,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
