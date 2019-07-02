@@ -71,11 +71,59 @@ func TestCalculateTax(t *testing.T) {
 		want uint64
 	}{
 		// 1. Total interest: 0, tax rate: 0%				-> 0
+		{
+			name: "1. Total interest: 0, tax rate: 0%",
+			args: args{
+				totalInterest: 0,
+				taxRate:       0,
+			},
+			want: 0,
+		},
 		// 2. Total interest: 1000000, tax rate: 0%			-> 0
+		{
+			name: "2. Total interest: 1000000, tax rate: 0%",
+			args: args{
+				totalInterest: 1000000,
+				taxRate:       0,
+			},
+			want: 0,
+		},
 		// 3. Total interest: 0, tax rate: 15%				-> 0
+		{
+			name: "3. Total interest: 0, tax rate: 15%",
+			args: args{
+				totalInterest: 0,
+				taxRate:       15,
+			},
+			want: 0,
+		},
 		// 4. Total interest: 1000000, tax rate: 15%		-> 150000
+		{
+			name: "4. Total interest: 1000000, tax rate: 15%",
+			args: args{
+				totalInterest: 1000000,
+				taxRate:       15,
+			},
+			want: 150000,
+		},
 		// 5. Total interest: 123123123, tax rate: 12.5%	-> 15390390(.375)
+		{
+			name: "5. Total interest: 123123123, tax rate: 12.5%",
+			args: args{
+				totalInterest: 123123123,
+				taxRate:       12.5,
+			},
+			want: 15390390,
+		},
 		// 6. Total interest: 123123456, tax rate: 13.6%	-> 1674479001(.6)
+		{
+			name: "6. Total interest: 123123456, tax rate: 13.6%",
+			args: args{
+				totalInterest: 123123456,
+				taxRate:       13.6,
+			},
+			want: 1674479001,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
