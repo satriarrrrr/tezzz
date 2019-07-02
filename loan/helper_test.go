@@ -16,11 +16,65 @@ func TestNumberOfDays(t *testing.T) {
 		wantErr bool
 	}{
 		// 1. Invalid format of soldDate
+		{
+			name: "1. Invalid format of soldDate",
+			args: args{
+				soldDate:   "15-02-2019",
+				matureDate: "2020-05-01",
+			},
+			want:    0,
+			wantErr: true,
+		},
 		// 2. Invalid format of matureDate
+		{
+			name: "2. Invalid format of matureDate",
+			args: args{
+				soldDate:   "2020-01-01",
+				matureDate: "",
+			},
+			want:    0,
+			wantErr: true,
+		},
 		// 3. Invalid format of both soldDate & matureDate
+		{
+			name: "3. Invalid format of both soldDate & matureDate",
+			args: args{
+				soldDate:   "15-02-2019",
+				matureDate: "2020-35-01",
+			},
+			want:    0,
+			wantErr: true,
+		},
 		// 4. soldDate is greater than matureDate
+		{
+			name: "4. soldDate is greater than matureDate",
+			args: args{
+				soldDate:   "2019-08-14",
+				matureDate: "2019-06-10",
+			},
+			want:    0,
+			wantErr: true,
+		},
 		// 5. soldDate == matureDate
+		{
+			name: "5. soldDate == matureDate",
+			args: args{
+				soldDate:   "2020-03-11",
+				matureDate: "2020-03-11",
+			},
+			want:    0,
+			wantErr: false,
+		},
 		// 6. matureDate is greater than soldDate
+		{
+			name: "6. matureDate is greater than soldDate",
+			args: args{
+				soldDate:   "2020-03-15",
+				matureDate: "2020-05-01",
+			},
+			want:    17,
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
